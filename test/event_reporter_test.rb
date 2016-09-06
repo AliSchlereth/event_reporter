@@ -29,14 +29,24 @@ class EventReporterTest < Minitest::Test
 
     assert_equal "Schlereth", reporter.clean_last_name("schLErEth ")
     assert_equal "", reporter.clean_last_name(nil)
-
   end
 
-  def test_clean_email_ensure_email_is_a_string
+  def test_clean_home_phone_returns_a_10_digit_number_as_a_string
     reporter = EventReporter.new
 
-    assert_equal "asch@gmail.com", reporter.clean_email("asch@gmail.com")
-    assert_equal "", reporter.clean_email(nil)
+    assert_equal "0000000000", reporter.clean_home_phone(nil)
+    assert_equal "7384950284", reporter.clean_home_phone(7384950284)
+    assert_equal "0000950284", reporter.clean_home_phone("950284")
+    assert_equal "0000950284", reporter.clean_home_phone("95AA--0284")
+  end
+
+  def test_clean_to_string_ensures_entry_is_a_string
+    reporter = EventReporter.new
+
+    assert_equal "asch@gmail.com", reporter.clean_to_string("asch@gmail.com")
+    assert_equal "124 Street Dr", reporter.clean_to_string("124 Street Dr")
+    assert_equal "", reporter.clean_to_string(nil)
+
   end
 
 

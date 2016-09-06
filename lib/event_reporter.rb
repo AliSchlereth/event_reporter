@@ -12,9 +12,9 @@ class EventReporter
     attendees.each do |row|
       first_name = clean_first_name(row[:first_name])
       last_name = clean_last_name(row[:last_name])
-      email = clean_email(row[:email_address])
+      email = clean_to_string(row[:email_address])
       home_phone = clean_home_phone(row[:home_phone])
-      # street = row[:street].to_s
+      street = clean_to_string(row[:street])
       # city = row[:city].to_s
       cleaned_attendees[row[:id]] = {"first_name" => clean_first_name ,
                                       "last_name" => clean_last_name ,
@@ -25,23 +25,19 @@ class EventReporter
   end
 
   def clean_first_name(first_name)
-    first_name = "" if first_name.nil?
-    first_name.strip.downcase.capitalize
+    first_name.to_s.strip.downcase.capitalize
   end
 
   def clean_last_name(last_name)
-    last_name = "" if last_name.nil?
-    last_name.strip.downcase.capitalize
+    last_name.to_s.strip.downcase.capitalize
   end
 
-  def clean_email(email)
-    email = "" if email.nil?
-    email
+  def clean_to_string(entry)
+    entry.to_s
   end
 
   def clean_home_phone(phone)
-    phone = "0000000000" if phone.nil?
-    phone.to_s.delete("-")
+    phone.to_s.gsub(/[^0-9]/, '').rjust(10, "0")
   end
 
 end
