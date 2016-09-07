@@ -63,4 +63,51 @@ class QueueTest < Minitest::Test
     assert_equal 0, q.count
   end
 
+  def test_print_prints_to_command_line_a_spaced_set_of_data
+    q = Queue.new
+    value1 = { "first_name"=>"Douglas",
+               "last_name"=>"Nguyen",
+                   "email"=>"arannon@jumpstartlab.com",
+              "home_phone"=>"6154385000",
+                  "street"=>"3155 19th St NW",
+                    "city"=>"Washington",
+                   "state"=>"DC",
+                 "zipcode"=>"20010"}
+    value2 = { "first_name"=>"Ali",
+                "last_name"=>"Schlereth",
+                    "email"=>"aschlereth@jumpstartlab.com",
+              "home_phone" => "9938847568",
+                   "street"=>"3155 19th St NW",
+                     "city"=>"Washington",
+                    "state"=>"DC",
+                  "zipcode"=>"20010"}
+    q.insert(value1)
+    q.insert(value2)
+    assert_equal nil, q.print
+  end
+
+  def test_print_by_sorts_the_queue_before_printing
+    q = Queue.new
+    value1 = { "first_name"=>"Douglas",
+               "last_name"=>"Nguyen",
+                   "email"=>"arannon@jumpstartlab.com",
+              "home_phone"=>"6154385000",
+                  "street"=>"3155 19th St NW",
+                    "city"=>"Washington",
+                   "state"=>"DC",
+                 "zipcode"=>"20010"}
+    value2 = { "first_name"=>"Ali",
+                "last_name"=>"Schlereth",
+                    "email"=>"aschlereth@jumpstartlab.com",
+              "home_phone" => "9938847568",
+                   "street"=>"3155 19th St NW",
+                     "city"=>"Washington",
+                    "state"=>"DC",
+                  "zipcode"=>"20010"}
+    q.insert(value1)
+    q.insert(value2)
+    assert_equal nil, q.print_by("first_name")
+  end
+
+
 end

@@ -22,6 +22,7 @@ class EventReporter
   end
 
   def find(attribute, criteria)
+    @queue.clear
     @clean_attendees.select do |row, attendee|
       @queue.insert(attendee) if attendee[attribute] == criteria
     end
