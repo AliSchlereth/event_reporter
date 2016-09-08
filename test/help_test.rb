@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require 'pry'
 require './lib/help'
 
@@ -44,12 +43,5 @@ class HelpTest < Minitest::Test
   def test_help_find_prints_directions_for_find
     assert_equal nil, Help.find
   end
-
-
-
-
-
-
-
 
 end

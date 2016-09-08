@@ -1,4 +1,3 @@
-require 'sunlight/congress'
 require 'json'
 require 'open-uri'
 require 'csv'
@@ -10,10 +9,6 @@ class Queue
   def initialize
     @queue = []
   end
-
-  Sunlight::Congress.api_key = "7e848193a2ad41c6b8df67de3de2b459"
-  # Sunlight::Congress.api_key = "7e848193a2ad41c6b8df67de3de2b459"
-
 
   def insert(attendee)
     @queue << attendee

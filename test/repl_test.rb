@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require 'pry'
 require './lib/repl'
 
@@ -10,15 +9,12 @@ class ReplTest < Minitest::Test
   end
 
   def test_initialize_calls_start
-    # repl = Repl.new
   end
 
   def test_start_calls_command_cycle
-    # repl = Repl.new
   end
 
   def test_a_load_command_calls_load
-
   end
 
 end

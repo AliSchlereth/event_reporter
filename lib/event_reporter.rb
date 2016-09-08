@@ -11,7 +11,6 @@ class EventReporter
   end
 
   def load(file = "event_attendees.csv")
-    # binding.pry
     attendees = CSV.open file, headers: true, header_converters: :symbol
     @clean_attendees = create_attendee(attendees)
   end
@@ -58,6 +57,5 @@ class EventReporter
   def queue_export_html(filename)
     @queue.export_html(filename)
   end
-
-
+  
 end
