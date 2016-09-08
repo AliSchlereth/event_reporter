@@ -25,7 +25,6 @@ class EventReporter
   end
 
   def find(attribute, criteria)
-    binding.pry
     @queue.clear
     @clean_attendees.select do |attendee|
       @queue.insert(attendee) if attendee.send(attribute).downcase == criteria
@@ -33,13 +32,31 @@ class EventReporter
   end
 
   def queue_count
-    # binding.pry
     @queue.count
   end
 
   def queue_clear
-    binding.pry
     @queue.clear
+  end
+
+  def queue_district
+    @queue.district
+  end
+
+  def queue_print
+    @queue.print
+  end
+
+  def queue_print_by(attribute)
+    @queue.print_by(attribute)
+  end
+
+  def queue_save_to(filename)
+    @queue.save_to(filename)
+  end
+
+  def queue_export_html(filename)
+    @queue.export_html(filename)
   end
 
 

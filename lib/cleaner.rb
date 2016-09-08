@@ -13,7 +13,7 @@ module Cleaner
   end
 
   def clean_state(state)
-    state.upcase[0..1]
+    state.to_s.upcase[0..1]
   end
 
   def clean_zipcode(zipcode)

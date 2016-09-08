@@ -121,7 +121,14 @@ class QueueTest < Minitest::Test
     assert_equal nil, que.print_by("first_name")
   end
 
-  def test_district_prints_updated_information
+  def test_find_district_uses_a_zipcode_to_find_a_legislative_district_number
+      que = Queue.new
+
+      assert_equal 0, que.find_district("20010")
+  end
+
+
+  def test_district_updates_attendee_information
     que = Queue.new
     value1 = {  last_name: "Nguyen",
                first_name: "Douglas",
@@ -143,8 +150,9 @@ class QueueTest < Minitest::Test
     attendee2 = Attendee.new(value2)
     que.insert(attendee1)
     que.insert(attendee2)
+    que.district
 
-    assert_equal nil, que.district
+    assert_equal 0, que.queue[0].district
   end
 
   def test_save_to_creates_a_new_csv

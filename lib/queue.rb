@@ -52,7 +52,6 @@ class Queue
       district_number = find_district(zip)
       member.district = district_number
     end
-    print
   end
 
   def find_district(zip)
@@ -86,7 +85,7 @@ class Queue
     table = create_table(input_filename)
     Dir.mkdir("output") unless Dir.exists?("output")
     filename = input_filename
-    File.open(filename, "w") do |file|
+    File.open("output/#{filename}", "w") do |file|
       file.puts table
     end
   end
