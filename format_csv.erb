@@ -1,0 +1,41 @@
+<html>
+<head>
+<style>
+table, th, td {
+      border: 1px solid black;
+}
+</style>
+<!-- <meta charset='utf-8'>
+<title>Event Attendees</title> -->
+
+</head>
+<body>
+
+<table style="width:100%">
+<tr>
+  <th>Last Name</th>
+  <th>First Name</th>
+  <th>Email Address</th>
+  <th>Zipcode</th>
+  <th>City</th>
+  <th>State</th>
+  <th>Address</th>
+  <th>Phone</th>
+  <th>District</th>
+</tr>
+  <% queue.each do |member| %>
+    <tr>
+      <td><%= "#{member.last_name}" %></td>
+      <td><%= "#{member.first_name}" %></td>
+      <td><%= "#{member.email_address}" %></td>
+      <td><%= "#{member.zipcode}" %></td>
+      <td><%= "#{member.city}" %></td>
+      <td><%= "#{member.state}" %></td>
+      <td><%= "#{member.street}" %></td>
+      <td><%= "#{member.homephone}" %></td>
+      <td><%= "#{member.district}" %></td>
+    </tr>
+  <% end %>
+</table>
+</body>
+</html>
