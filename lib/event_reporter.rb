@@ -25,8 +25,10 @@ class EventReporter
 
   def find(attribute, criteria)
     @queue.clear
-    @clean_attendees.select do |attendee|
-      @queue.insert(attendee) if attendee.send(attribute).downcase == criteria
+    if @clean_attendees
+      @clean_attendees.select do |attendee|
+        @queue.insert(attendee) if attendee.send(attribute).downcase == criteria
+      end
     end
   end
 
@@ -57,5 +59,5 @@ class EventReporter
   def queue_export_html(filename)
     @queue.export_html(filename)
   end
-  
+
 end
