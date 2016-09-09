@@ -2,7 +2,7 @@ module Help
 
   def Help.all
     puts "Commands Available in Event Reporter:\n help\n help(specific command)\n load filename\n find attribute, critera\n queue count\n queue clear\n queue district\n queue print\n queue print by criteria\n queue save to filename.csv\n queue export html filename.html\n"
-    puts "For more specifics on any command, enter help followed by method name.\n For example help load"
+    puts "For more specifics on any command, enter help followed by method name.\n For example: help load"
   end
 
   def Help.load
