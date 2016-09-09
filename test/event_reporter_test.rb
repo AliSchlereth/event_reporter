@@ -1,16 +1,9 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require 'pry'
 require 'csv'
 require './lib/event_reporter'
 
 class EventReporterTest < Minitest::Test
-
-  # def test_event_reporter_loads_a_csv_file
-  #   reporter = EventReporter.new
-  #
-  #   assert_instance_of CSV, reporter.load("event_attendees_short.csv")
-  # end
 
   def test_create_attendee_returns_an_array_of_objects
     reporter = EventReporter.new
@@ -37,7 +30,7 @@ class EventReporterTest < Minitest::Test
 
     reporter.find("first_name", "sarah")
 
-    assert_equal 2, reporter.queue.count
+    assert_equal 2, reporter.queue_count
   end
 
   def test_clear_empties_a_full_queue
@@ -91,9 +84,4 @@ class EventReporterTest < Minitest::Test
     reporter.find("first_name", "mary")
     reporter.queue_export_html("marys.html")
   end
-
-
-
-
-
 end

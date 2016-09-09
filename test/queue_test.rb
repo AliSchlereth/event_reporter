@@ -1,5 +1,4 @@
-require 'minitest/autorun'
-require 'minitest/pride'
+require './test/test_helper.rb'
 require 'pry'
 require './lib/queue'
 require './lib/attendee'
@@ -8,6 +7,7 @@ class QueueTest < Minitest::Test
 
   def test_queue_defaults_to_an_empty_hash
     que = Queue.new
+
     assert_instance_of Array, que.queue
     assert que.queue.empty?
   end
@@ -23,6 +23,7 @@ class QueueTest < Minitest::Test
                     state: "DC",
                   zipcode: "20010"}
     attendee = Attendee.new(value)
+
     assert que.queue.empty?
 
     que.insert(attendee)
@@ -44,7 +45,9 @@ class QueueTest < Minitest::Test
     attendee = Attendee.new(value)
 
     assert_equal 0, que.count
+
     que.insert(attendee)
+
     assert_equal 1, que.count
   end
 
@@ -92,7 +95,7 @@ class QueueTest < Minitest::Test
     attendee2 = Attendee.new(value2)
     que.insert(attendee1)
     que.insert(attendee2)
-    assert_equal nil, que.print
+    que.print
   end
 
   def test_print_by_sorts_the_queue_before_printing
@@ -118,7 +121,7 @@ class QueueTest < Minitest::Test
     que.insert(attendee1)
     que.insert(attendee2)
 
-    assert_equal nil, que.print_by("first_name")
+    que.print_by("first_name")
   end
 
   def test_find_district_uses_a_zipcode_to_find_a_legislative_district_number
@@ -205,6 +208,4 @@ class QueueTest < Minitest::Test
     que.insert(attendee2)
     que.export_html("test.html")
   end
-
-
 end

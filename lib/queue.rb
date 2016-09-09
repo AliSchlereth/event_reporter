@@ -1,4 +1,3 @@
-require 'sunlight/congress'
 require 'json'
 require 'open-uri'
 require 'csv'
@@ -10,10 +9,6 @@ class Queue
   def initialize
     @queue = []
   end
-
-  Sunlight::Congress.api_key = "7e848193a2ad41c6b8df67de3de2b459"
-  # Sunlight::Congress.api_key = "7e848193a2ad41c6b8df67de3de2b459"
-
 
   def insert(attendee)
     @queue << attendee
@@ -63,10 +58,10 @@ class Queue
   end
 
   def save_to(input_filename)
-    Dir.mkdir("output") unless Dir.exists? "output"
+    # Dir.mkdir("output") unless Dir.exists? "output"
     filename = input_filename
 
-    CSV.open("output/#{filename}", "w") do |csv|
+    CSV.open(filename, "w") do |csv|
       headers = ["last_name", "first_name", "email_address", "homephone", "street", "city", "state", "zipcode", "district"]
       csv << headers
       queue.each do |member|
@@ -83,9 +78,9 @@ class Queue
 
   def export_html(input_filename)
     table = create_table(input_filename)
-    Dir.mkdir("output") unless Dir.exists?("output")
+    # Dir.mkdir("output") unless Dir.exists?("output")
     filename = input_filename
-    File.open("output/#{filename}", "w") do |file|
+    File.open(filename, "w") do |file|
       file.puts table
     end
   end
